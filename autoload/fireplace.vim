@@ -1255,6 +1255,7 @@ function! s:eval_callback(state, delegates, message) abort
   endif
   if has_key(a:message, 'value')
     call s:echon(a:state, a:message.value)
+    call popup_atcursor(substitute(a:message.value, '[\x0]', '', 'g'), #{time: 3000})
     if has_key(a:message, 'ns')
       call s:echon(a:state, "\n")
     endif
